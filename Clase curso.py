@@ -6,3 +6,10 @@ class Curso:
         self.instructor = instructor
         self.estudiantes_inscritos = [] #Una lista para los objetos
         self.evaluaciones = []       
+
+    def inscribir_estudiante(self, estudiante):
+        try:
+            estudiante.inscribir_curso(self)
+            self.estudiantes_inscritos.append(estudiante)
+        except ValueError as e:
+            print(f"Error al inscribir estudiante: {e}")
