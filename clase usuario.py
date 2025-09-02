@@ -28,3 +28,9 @@ class Estudiante(Usuario):
 
     def obtener_cursos_inscritos(self):
         return self.cursos_inscritos
+
+# Clase Instructo, tambien heredara a usuario
+class Instructor(Usuario):
+    def __init__(self, id_usuario, nombre, email):
+        super().__init__(id_usuario, nombre, email)
+        self.cursos_impartidos = []  #Una lista para los cursos q imparte
