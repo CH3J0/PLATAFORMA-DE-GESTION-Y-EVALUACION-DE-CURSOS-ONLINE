@@ -12,3 +12,10 @@ class Usuario:
             f" - Id de usuario: {self.id_usuario}\n"
             f" - Correo electrónico de usuario: {self.email}"
         )
+
+# Clase Estudiante, esta heredara de usuario
+class Estudiante(Usuario):
+    def __init__(self, id_usuario, nombre, email):
+        super().__init__(id_usuario, nombre, email)
+        self.cursos_inscritos = []  
+        self.calificaciones = {}   
