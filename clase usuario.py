@@ -25,3 +25,6 @@ class Estudiante(Usuario):
             raise ValueError(f"El estudiante {self.nombre}, ya está inscrito en este curso")
         self.cursos_inscritos.append(curso)
         print(f"Estudiante: {self.nombre}, ha sido inscrito en el curso: {curso.nombre}")
+
+    def obtener_cursos_inscritos(self):
+        return self.cursos_inscritos
