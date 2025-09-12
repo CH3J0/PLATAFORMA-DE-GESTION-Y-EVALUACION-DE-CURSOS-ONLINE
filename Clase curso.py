@@ -4,10 +4,13 @@ class Curso:
         self.codigo = codigo
         self.nombre = nombre
         self.instructor = instructor
-        self.estudiantes_inscritos = [] #Una lista para los objetos
-        self.evaluaciones = []       
+        self.estudiantes_inscritos = []
+        self.evaluaciones = []
 
     def inscribir_estudiante(self, estudiante):
+        if estudiante in self.estudiantes_inscritos:
+            print(f"El estudiante {estudiante.nombre} ya está inscrito en el curso {self.nombre}.")
+            return
         try:
             estudiante.inscribir_curso(self)
             self.estudiantes_inscritos.append(estudiante)
@@ -15,6 +18,9 @@ class Curso:
             print(f"Error al inscribir estudiante: {e}")
 
     def crear_evaluacion(self, evaluacion):
+        if any(ev.nombre == evaluacion.nombre for ev in self.evaluaciones):
+            print(f"Ya existe una evaluación llamada '{evaluacion.nombre}' en este curso.")
+            return
         self.evaluaciones.append(evaluacion)
         print(f"Evaluación {evaluacion.nombre} creada para el curso: {self.nombre}")
 
@@ -35,9 +41,10 @@ class Curso:
         print(f" - Evaluaciones creadas:")
         if self.evaluaciones:
             for ev in self.evaluaciones:
-                print(f"    - {ev.nombre} ({ev.tipo})")
+                print(f"    - {str(ev)}")
         else:
             print("    - Ninguna")
+
 
 # Clase Evaluacion para complementar el curso
 class Evaluacion:
@@ -48,7 +55,8 @@ class Evaluacion:
     def __str__(self):
         return f"{self.nombre} ({self.tipo})"
 
-#validaciones
+
+# Validaciones para curso y evaluación
 def pedir_codigo():
     while True:
         codigo = input("Ingrese el código del curso (solo números): ")
@@ -68,11 +76,4 @@ def pedir_nombre_evaluacion():
         nombre = input("Ingrese el nombre de la evaluación: ")
         if nombre.strip():
             return nombre
-        print("Error: El nombre no puede estar vacío.")
-
-def pedir_tipo_evaluacion():
-    while True:
-        tipo = input("Ingrese el tipo de evaluación (Ej: Examen, Proyecto, Tarea): ")
-        if tipo.replace(" ", "").isalpha():
-            return tipo
-        print("Error: El tipo debe contener solo letras.")
+        print("Error: El nombre no puede
