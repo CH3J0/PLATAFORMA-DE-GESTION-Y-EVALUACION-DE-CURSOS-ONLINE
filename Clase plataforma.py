@@ -1,9 +1,8 @@
-#Plataforma
 # Clase para centralizar la gestión de la plataforma
 class Plataforma:
     def __init__(self):
-        self.usuarios = {}  # Diccionario para almacenar usuarios por ID
-        self.cursos = {}    # Diccionario para almacenar cursos por código
+        self.usuarios = {}
+        self.cursos = {}
         
     def registrar_usuario(self, usuario):
         if usuario.id_usuario in self.usuarios:
