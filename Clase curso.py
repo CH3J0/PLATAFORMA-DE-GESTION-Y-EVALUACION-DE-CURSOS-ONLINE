@@ -20,3 +20,21 @@ class Curso:
 
     def obtener_estudiantes_inscritos(self):
         return self.estudiantes_inscritos
+
+    def mostrar_info_completa(self):
+        print(f"\n--- INFORMACIÓN DEL CURSO ---")
+        print(f" - Código: {self.codigo}")
+        print(f" - Nombre: {self.nombre}")
+        print(f" - Instructor: {self.instructor.nombre}")
+        print(f" - Estudiantes inscritos:")
+        if self.estudiantes_inscritos:
+            for est in self.estudiantes_inscritos:
+                print(f"    - {est.nombre} (ID: {est.id_usuario})")
+        else:
+            print("    - Ninguno")
+        print(f" - Evaluaciones creadas:")
+        if self.evaluaciones:
+            for ev in self.evaluaciones:
+                print(f"    - {ev.nombre} ({ev.tipo})")
+        else:
+            print("    - Ninguna")
