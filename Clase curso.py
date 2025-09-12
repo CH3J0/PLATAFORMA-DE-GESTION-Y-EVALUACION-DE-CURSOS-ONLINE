@@ -38,3 +38,12 @@ class Curso:
                 print(f"    - {ev.nombre} ({ev.tipo})")
         else:
             print("    - Ninguna")
+
+# Clase Evaluacion para complementar el curso
+class Evaluacion:
+    def __init__(self, nombre, tipo):
+        self.nombre = nombre
+        self.tipo = tipo  
+
+    def __str__(self):
+        return f"{self.nombre} ({self.tipo})"
