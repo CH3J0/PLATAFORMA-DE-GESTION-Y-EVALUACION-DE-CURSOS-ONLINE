@@ -1,10 +1,15 @@
+# MENU
 def menu_principal(plataforma):
     while True:
         print("\n--- MENÚ PRINCIPAL ---")
         print("1. Registrar nuevo usuario")
         print("2. Acceder como usuario existente")
-        print("3. Mostrar todos los usuarios")
-        print("4. Salir")
+        print("3. Crear curso")
+        print("4. Inscribir estudiante en curso")
+        print("5. Crear evaluación")
+        print("6. Mostrar información de curso")
+        print("7. Mostrar todos los usuarios")
+        print("8. Salir")
         opcion = input("Seleccione una opción: ")
 
         if opcion == "1":
@@ -15,7 +20,6 @@ def menu_principal(plataforma):
                 continue
             nombre = pedir_nombre()
             email = pedir_email()
-
             if tipo == "E":
                 usuario = Estudiante(id_usuario, nombre, email)
             elif tipo == "I":
@@ -32,18 +36,55 @@ def menu_principal(plataforma):
             if usuario:
                 print("\n--- USUARIO ENCONTRADO ---")
                 print(usuario)
-                # Aquí podrías agregar submenús según el tipo de usuario
             else:
                 print("Usuario no encontrado. Regístrese primero.")
 
         elif opcion == "3":
+            codigo = pedir_codigo()
+            nombre = pedir_nombre_curso()
+            id_instructor = pedir_id()
+            try:
+                plataforma.crear_curso(codigo, nombre, id_instructor)
+            except ValueError as e:
+                print(f"Error: {e}")
+
+        elif opcion == "4":
+            id_estudiante = pedir_id()
+            codigo_curso = pedir_codigo()
+            plataforma.inscribir_estudiante_en_curso(id_estudiante, codigo_curso)
+
+        elif opcion == "5":
+            codigo_curso = pedir_codigo()
+            curso = plataforma.obtener_info_curso(codigo_curso)
+            if curso:
+                nombre_eval = pedir_nombre_evaluacion()
+                tipo_eval = pedir_tipo_evaluacion()
+                evaluacion = Evaluacion(nombre_eval, tipo_eval)
+                curso.crear_evaluacion(evaluacion)
+            else:
+                print("Curso no encontrado.")
+
+        elif opcion == "6":
+            codigo_curso = pedir_codigo()
+            curso = plataforma.obtener_info_curso(codigo_curso)
+            if curso:
+                curso.mostrar_info_completa()
+            else:
+                print("Curso no encontrado.")
+
+        elif opcion == "7":
             print("\n--- LISTA DE USUARIOS REGISTRADOS ---")
             for u in plataforma.usuarios.values():
                 print(u)
                 print("-" * 40)
 
-        elif opcion == "4":
+        elif opcion == "8":
             print("Saliendo del sistema...")
             break
+
         else:
             print("Opción no válida.")
+
+# INSTANCIA GENERAL
+plataforma = Plataforma()
+menu_principal(plataforma)
