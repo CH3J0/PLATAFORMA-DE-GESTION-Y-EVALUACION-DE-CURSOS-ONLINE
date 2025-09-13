@@ -1,4 +1,4 @@
-# clase usuario, para conocer la información del usuario
+# USUARIO (hereda a estudiante e instructor)
 class Usuario:
     def __init__(self, id_usuario, nombre, email):
         self.id_usuario = id_usuario
@@ -13,8 +13,7 @@ class Usuario:
             f" - Correo electrónico de usuario: {self.email}"
         )
 
-
-# Clase Estudiante, esta heredará de usuario
+# Clase Estudiante
 class Estudiante(Usuario):
     def __init__(self, id_usuario, nombre, email):
         super().__init__(id_usuario, nombre, email)
@@ -47,9 +46,7 @@ class Estudiante(Usuario):
             f" - Cursos inscritos: {cursos}\n"
             f" - Calificaciones:\n{calificaciones}"
         )
-
-
-# Clase Instructor, también heredará de usuario
+# Clase Instructor
 class Instructor(Usuario):
     def __init__(self, id_usuario, nombre, email):
         super().__init__(id_usuario, nombre, email)
@@ -68,46 +65,3 @@ class Instructor(Usuario):
             super().__str__() + "\n"
             f" - Cursos impartidos: {cursos}"
         )
-
-# input
-def pedir_id():
-    while True:
-        id_usuario = input("Ingrese el ID (solo números): ")
-        if id_usuario.isdigit():
-            return int(id_usuario)
-        print("Error: El ID debe contener solo números.")
-
-def pedir_nombre():
-    while True:
-        nombre = input("Ingrese el nombre (sin números): ")
-        if nombre.replace(" ", "").isalpha():
-            return nombre
-        print("Error: El nombre no debe contener números ni símbolos.")
-
-def pedir_email():
-    while True:
-        email = input("Ingrese el correo electrónico: ")
-        if "@" in email and "." in email:
-            return email
-        print("Error: El correo debe contener '@' y '.'")
-
-# Crear estudiante con validación
-print("\n--- REGISTRO DE ESTUDIANTE ---")
-id_est = pedir_id()
-nombre_est = pedir_nombre()
-email_est = pedir_email()
-estudiante = Estudiante(id_est, nombre_est, email_est)
-
-# Crear instructor con validación
-print("\n--- REGISTRO DE INSTRUCTOR ---")
-id_inst = pedir_id()
-nombre_inst = pedir_nombre()
-email_inst = pedir_email()
-instructor = Instructor(id_inst, nombre_inst, email_inst)
-
-# Mostrar resultados
-print("\n--- DATOS DEL ESTUDIANTE ---")
-print(estudiante)
-
-print("\n--- DATOS DEL INSTRUCTOR ---")
-print(instructor)
