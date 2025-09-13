@@ -1,4 +1,4 @@
-# Clase para centralizar la gestión de la plataforma
+# PLATAFORMA
 class Plataforma:
     def __init__(self):
         self.usuarios = {}
@@ -17,23 +17,20 @@ class Plataforma:
         instructor = self.usuarios[id_instructor]
         nuevo_curso = Curso(codigo, nombre, instructor)
         self.cursos[codigo] = nuevo_curso
-        instructor.cursos_impartidos.append(nuevo_curso)
-        print(f"Curso '{nombre}' creado por el instructor '{instructor.nombre}'.")
+        instructor.agregar_curso(nuevo_curso)
 
     def inscribir_estudiante_en_curso(self, id_estudiante, codigo_curso):
-        try:
-            estudiante = self.usuarios.get(id_estudiante)
-            curso = self.cursos.get(codigo_curso)
-            
-            if not isinstance(estudiante, Estudiante):
-                raise ValueError("ID de usuario no corresponde a un estudiante.")
-            
-            if not curso:
-                raise ValueError("Código de curso no encontrado.")
-                
-            curso.inscribir_estudiante(estudiante)
-        except ValueError as e:
-            print(f"Error: {e}")
+        estudiante = self.usuarios.get(id_estudiante)
+        curso = self.cursos.get(codigo_curso)
+        
+        if not isinstance(estudiante, Estudiante):
+            print("ID de usuario no corresponde a un estudiante.")
+            return
+        if not curso:
+            print("Código de curso no encontrado.")
+            return
+        
+        curso.inscribir_estudiante(estudiante)
 
     def obtener_info_curso(self, codigo_curso):
         return self.cursos.get(codigo_curso)
