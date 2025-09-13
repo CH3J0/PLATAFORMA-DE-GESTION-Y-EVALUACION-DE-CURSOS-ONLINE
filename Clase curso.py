@@ -1,4 +1,4 @@
-# Clase Curso para gestionar la información de los cursos
+# CUURSO (hereda a evalucacion)
 class Curso:
     def __init__(self, codigo, nombre, instructor):
         self.codigo = codigo
@@ -24,9 +24,6 @@ class Curso:
         self.evaluaciones.append(evaluacion)
         print(f"Evaluación {evaluacion.nombre} creada para el curso: {self.nombre}")
 
-    def obtener_estudiantes_inscritos(self):
-        return self.estudiantes_inscritos
-
     def mostrar_info_completa(self):
         print(f"\n--- INFORMACIÓN DEL CURSO ---")
         print(f" - Código: {self.codigo}")
@@ -45,8 +42,6 @@ class Curso:
         else:
             print("    - Ninguna")
 
-
-# Clase Evaluacion para complementar el curso
 class Evaluacion:
     def __init__(self, nombre, tipo):
         self.nombre = nombre
@@ -54,26 +49,3 @@ class Evaluacion:
 
     def __str__(self):
         return f"{self.nombre} ({self.tipo})"
-
-
-# Validaciones para curso y evaluación
-def pedir_codigo():
-    while True:
-        codigo = input("Ingrese el código del curso (solo números): ")
-        if codigo.isdigit():
-            return int(codigo)
-        print("Error: El código debe contener solo números.")
-
-def pedir_nombre_curso():
-    while True:
-        nombre = input("Ingrese el nombre del curso (sin números): ")
-        if nombre.replace(" ", "").isalpha():
-            return nombre
-        print("Error: El nombre no debe contener números ni símbolos.")
-
-def pedir_nombre_evaluacion():
-    while True:
-        nombre = input("Ingrese el nombre de la evaluación: ")
-        if nombre.strip():
-            return nombre
-        print("Error: El nombre no puede
