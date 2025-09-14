@@ -5,12 +5,15 @@ def reporte_promedio_bajo(curso, umbral=60):
     print(f"\n--- REPORTE: Estudiantes con promedio menor a {umbral} ---")
     for estudiante in curso.estudiantes_inscritos:
         notas = [
-            eval.notas.get(estudiante, 0)
+            (eval.nombre, eval.notas[estudiante])
             for eval in curso.evaluaciones
             if estudiante in eval.notas
         ]
         if notas:
-            promedio = sum(notas) / len(notas)
+            promedio = sum(n[1] for n in notas) / len(notas)
             if promedio < umbral:
                 print(f"\nEstudiante: {estudiante.nombre} | ID: {estudiante.id_usuario} | Email: {estudiante.email}")
                 print(f"Promedio: {promedio:.2f}")
+                print("Notas por evaluación:")
+                for nombre_eval, nota in notas:
+                    print(f"  - {nombre_eval}: {nota}")
