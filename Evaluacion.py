@@ -30,4 +30,11 @@ class Tarea(Evaluacion):
 
     def __str__(self):
         return f"Tarea: {self.nombre}, Entrega: {self.fecha_entrega}"
-    
+
+class Proyecto(Evaluacion):
+    def __init__(self, nombre, curso, porcentaje):
+        super().__init__(nombre, curso)
+        self.porcentaje = porcentaje
+
+    def __str__(self):
+        return f"Proyecto: {self.nombre}, Valor: {self.porcentaje}%"
