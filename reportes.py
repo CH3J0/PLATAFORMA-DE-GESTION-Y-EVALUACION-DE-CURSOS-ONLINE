@@ -12,4 +12,5 @@ def reporte_promedio_bajo(curso, umbral=60):
         if notas:
             promedio = sum(notas) / len(notas)
             if promedio < umbral:
-                print(f"- {estudiante.nombre} | Promedio: {promedio:.2f}")
+                print(f"\nEstudiante: {estudiante.nombre} | ID: {estudiante.id_usuario} | Email: {estudiante.email}")
+                print(f"Promedio: {promedio:.2f}")
