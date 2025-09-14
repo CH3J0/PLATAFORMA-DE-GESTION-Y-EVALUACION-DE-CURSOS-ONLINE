@@ -5,6 +5,10 @@ def asignar_nota_a_estudiante(curso, evaluacion, estudiante, nota):
     Maneja errores si el estudiante no está inscrito.
     """
     try:
+        if not isinstance(nota, (int, float)):
+            raise TypeError("La nota debe ser un número")
+        if nota < 0 or nota > 100:
+            raise ValueError("La nota debe estar entre 0 y 100")
         evaluacion.asignar_nota(estudiante, nota)
         print(f"Nota {nota} asignada a {estudiante.nombre} en {evaluacion.nombre}")
     except ValueError as e:
