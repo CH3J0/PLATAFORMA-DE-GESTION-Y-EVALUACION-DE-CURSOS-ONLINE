@@ -27,3 +27,7 @@ def reporte_promedio_bajo(curso, umbral=60):
                 print("Notas por evaluación:")
                 for nombre_eval,tipo, nota in notas:
                     print(f"  - {nombre_eval} ({tipo}): {nota}")
+
+        else:
+            print(f"\nEstudiante: {estudiante.nombre} | ID: {estudiante.id_usuario} | Email: {estudiante.email}")
+            print("  - No tiene notas registradas.")
