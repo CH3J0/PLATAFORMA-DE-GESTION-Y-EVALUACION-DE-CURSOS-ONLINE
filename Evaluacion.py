@@ -22,3 +22,12 @@ class Examen(Evaluacion):
 
     def __str__(self):
         return f"Examen: {self.nombre}, Duración: {self.duracion} min"
+    
+class Tarea(Evaluacion):
+    def __init__(self, nombre, curso, fecha_entrega):
+        super().__init__(nombre, curso)
+        self.fecha_entrega = fecha_entrega
+
+    def __str__(self):
+        return f"Tarea: {self.nombre}, Entrega: {self.fecha_entrega}"
+    
