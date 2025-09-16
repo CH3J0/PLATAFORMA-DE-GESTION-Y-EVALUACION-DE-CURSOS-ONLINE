@@ -1,8 +1,6 @@
----
 # Proyecto 1 – Programación Avanzada 
 **Plataforma de Gestión y Evaluación de Cursos Online**  
 Elaborado por Alejandro de León - 1502425 y Carlos Cholotío - 1517925
----
 
 ---
 
