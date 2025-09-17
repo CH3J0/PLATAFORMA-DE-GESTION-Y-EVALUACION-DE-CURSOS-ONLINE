@@ -1,0 +1,2 @@
+123,Alejandro,alejo@gmail.com,Estudiante
+321,Carlos,carlos@gmail.com,Instructor
