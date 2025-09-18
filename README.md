@@ -35,7 +35,7 @@ Está desarrollada en **Python** utilizando **programación orientada a objetos 
 
 * Crear **Examenes**, **Tareas** y **Proyectos**.
 * Asignar calificaciones a estudiantes.
-* Registro automático en **historial de notas**.
+* Registro de notas en `notas.txt`.
 * Reportes de estudiantes con promedio menor a un umbral definido.
 
 ### Menús Interactivos
@@ -74,7 +74,7 @@ Está desarrollada en **Python** utilizando **programación orientada a objetos 
 
 * `usuarios.txt`: almacena todos los usuarios registrados.
 * `cursos.txt`: almacena todos los cursos con estudiantes y evaluaciones.
-* Historial de notas en memoria para generar reportes durante la ejecución.
+* `cursos.txt`: almacena todas las notas en orden dependiendo el curso y estudiante.
 
 ---
 
@@ -107,9 +107,10 @@ Está desarrollada en **Python** utilizando **programación orientada a objetos 
 ## Posibles Mejoras
 
 * Interfaz gráfica (GUI) para facilidad de uso.
-* Persistencia de historial de notas en archivo.
 * Exportación de reportes a PDF/Excel.
 * Autenticación y permisos más avanzados para usuarios.
+* Integración con bases de datos como SQLite para mayor escalabilidad.
 
 ---
+
 
